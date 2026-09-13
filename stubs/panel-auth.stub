@@ -1,0 +1,23 @@
+import { createAdmin } from '@webx-ui/module-admin'
+import { auth, WxUserMenu } from '@webx-ui/module-auth'
+
+// The components carry no styles of their own: each package ships one stylesheet, and the
+// design tokens travel inside the core one.
+import '@webx-ui/core/style.css'
+import '@webx-ui/module-admin/style.css'
+import '@webx-ui/module-auth/style.css'
+// Optional — without it the panel renders in the platform's own UI font.
+import '@webx-ui/tokens/fonts.css'
+
+/**
+ * The panel.
+ *
+ * Add a module's front end to `modules` as you install it. A section appears when both halves
+ * are there — the server reports the module in its manifest, and its front end is listed here.
+ */
+createAdmin({
+  basePath: '{{ path }}',
+  modules: [],
+  plugins: [auth()],
+  userMenu: WxUserMenu,
+}).mount()
